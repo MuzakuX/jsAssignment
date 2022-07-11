@@ -9,16 +9,26 @@
     <script src="script.js"> </script>
 </head>
 <body>
-    <h1> Studio Ghibli Movie Database</h1>
+    <img  class="banner" src="banner.png">
+    <h1 id="heading"> Studio Ghibli Movie Database</h1>
     <p id="intro"> Information about all of your favourite Studio Ghibli Films!</p>
-   <div id="button">
-        <form id="form">
-            <input type="search" id="query" name="q"
-            placeholder="My Neighbour Totoro">
-        </form>
+    
+
+     <div class="search-wrapper" data-search>
+        <label for="search">Search Films</label>
+        <input type="search" id="search">
+        <button type="button" class="searchbtn">Search</button>
    </div>
-    <img id="totoro" src="totoro.png">
-    <div id="film"></div>
-    <div id="fData"></div>
-</body>
+   <div id="filterBtns" >
+        <div class="buttonlayout">
+            <button class="btn" onclick="filterObject('all')">Show All</button>
+            <button class="btn" onclick="filterObject('Isao Takahata')">Isao Takahata</button>
+            <button class="btn" onclick="filterObject('Toru Hara')">Toru Hara</button>
+            <button class="btn" onclick="filterObject('Hayao Miyazaki')">Hayao Miyazaki</button>
+            <button class="btn" onclick="filterObject('Toshio Suzuki')">Toshio Suzuki</button>
+            <button class="btn" onclick="filterObject('Yoshiaki Nishimura')">Yoshiaki Nishimura</button>
+        </div>
+</div>
+    <div id="film" class="object"></div>
+    <div id="fData" class="object"></div>
 </html>
