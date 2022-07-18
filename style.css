@@ -87,3 +87,7 @@ input{
     font-family: 'Montserrat', sans-serif;
     color:rgb(65, 65, 65)
 }
+
+.filmProducer{
+    display: none;
+}
