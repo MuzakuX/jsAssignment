@@ -1,23 +1,25 @@
-window.onload = function() {
+window.onload = async function() {
     
-fetch("https://ghibliapi.herokuapp.com/films")
+    let films = [];   
+
+    await fetch("https://ghibliapi.herokuapp.com/films")
     .then((response) => {
         if (response.ok) {
             return response.json();
         }
     })
     .then(data => {
+        films = data;
         displayFilm(data);
-        
     })
 
-    const films = [];
+    
 
 function displayFilm(data) {
+    document.querySelector("#fData").innerHTML = ""; 
         for (let i=0; i<data.length;i++){
             data[i]
     const film = data[i];
-    films.push(film);
     let filmProducer = film.producer;
     let filmDiv = document.getElementById("film");
     let filmName = film.title;
@@ -52,20 +54,29 @@ function displayFilm(data) {
         }else if(event.target.innerText === "Toshio Suzuki") {
             filterObjects("Toshio Suzuki");
         }else if(event.target.innerText === "Yoshiaki Nishimura") {
-            filterObjects("Yoshiak iNishimura");
+            filterObjects("Yoshiaki Nishimura");
         }
     })
 
         function filterObjects(producer){
-            let filterFilms = films.filter((film) => {
-                if (film.producer === producer){
-                    return true  
-                }  
-                return false  
-            }); 
-            document.querySelector("#fData").innerHTML = 
-            console.log(producer)
-
+            if(producer === "all"){
+            return displayFilm(films)}
+            else {
+                const filterFilms = films.filter((film) => film.producer === producer);
+                return displayFilm(filterFilms);}
            
         }
+
+        function searchByMovieTitle(title){
+            const foundMovies = films.filter(film => film.title.toLowerCase().includes(title.toLowerCase()))
+            console.log(foundMovies);
+            return displayFilm(foundMovies);
+            
+        } 
+        document.querySelector(".searchbtn").addEventListener("click", function(){
+            const searchBy = document.getElementById("search").value
+            searchByMovieTitle(searchBy);
+          
+         })
+         
 }
