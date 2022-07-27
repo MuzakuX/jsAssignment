@@ -13,8 +13,6 @@ window.onload = async function() {
         displayFilm(data);
     })
 
-    
-
 function displayFilm(data) {
     document.querySelector("#fData").innerHTML = ""; 
         for (let i=0; i<data.length;i++){
@@ -42,23 +40,23 @@ function displayFilm(data) {
     filmImg.setAttribute("class", filmProducer);
         }}  
         
-    document.querySelector(".buttonlayout").addEventListener("click", function(event) {
-        if(event.target.innerText === "Show All") {
+document.querySelector(".buttonlayout").addEventListener("click", function(event) {
+     if(event.target.innerText === "Show All") {
             filterObjects("all");
-        }else if(event.target.innerText === "Isao Takahata") {
+     }else if(event.target.innerText === "Isao Takahata") {
             filterObjects("Isao Takahata");
-        }else if(event.target.innerText === "Toru Hara") {
+     }else if(event.target.innerText === "Toru Hara") {
             filterObjects("Toru Hara");
-        }else if(event.target.innerText === "Hayao Miyazaki") {
+      }else if(event.target.innerText === "Hayao Miyazaki") {
             filterObjects("Hayao Miyazaki");
-        }else if(event.target.innerText === "Toshio Suzuki") {
+     }else if(event.target.innerText === "Toshio Suzuki") {
             filterObjects("Toshio Suzuki");
-        }else if(event.target.innerText === "Yoshiaki Nishimura") {
+      }else if(event.target.innerText === "Yoshiaki Nishimura") {
             filterObjects("Yoshiaki Nishimura");
-        }
-    })
+     }
+ })
 
-        function filterObjects(producer){
+function filterObjects(producer){
             if(producer === "all"){
             return displayFilm(films)}
             else {
@@ -66,17 +64,14 @@ function displayFilm(data) {
                 return displayFilm(filterFilms);}
            
         }
-
-        function searchByMovieTitle(title){
-            const foundMovies = films.filter(film => film.title.toLowerCase().includes(title.toLowerCase()))
-            console.log(foundMovies);
-            return displayFilm(foundMovies);
+        
+ function searchByMovieTitle(title){
+    const foundMovies = films.filter(film => film.title.toLowerCase().includes(title.toLowerCase()))
+    return displayFilm(foundMovies);
             
-        } 
-        document.querySelector(".searchbtn").addEventListener("click", function(){
+    } 
+    document.querySelector(".searchbtn").addEventListener("click", function(){
             const searchBy = document.getElementById("search").value
             searchByMovieTitle(searchBy);
-          
-         })
-         
+         })        
 }
