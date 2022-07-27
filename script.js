@@ -44,21 +44,28 @@ function displayFilm(data) {
         if(event.target.innerText === "Show All") {
             filterObjects("all");
         }else if(event.target.innerText === "Isao Takahata") {
-            filterObjects("IsaoTakahata");
-            console.log("this is working")
+            filterObjects("Isao Takahata");
         }else if(event.target.innerText === "Toru Hara") {
-            filterObjects("ToruHara");
+            filterObjects("Toru Hara");
         }else if(event.target.innerText === "Hayao Miyazaki") {
-            filterObjects("HayaoMiyazaki");
+            filterObjects("Hayao Miyazaki");
         }else if(event.target.innerText === "Toshio Suzuki") {
-            filterObjects("ToshioSuzuki");
+            filterObjects("Toshio Suzuki");
         }else if(event.target.innerText === "Yoshiaki Nishimura") {
-            filterObjects("YoshiakiNishimura");
+            filterObjects("Yoshiak iNishimura");
         }
     })
 
-        function filterObjects(){
-            console.log("okay so just like imagine all the films that aren't by the producer you want aren't there")
+        function filterObjects(producer){
+            let filterFilms = films.filter((film) => {
+                if (film.producer === producer){
+                    return true  
+                }  
+                return false  
+            }); 
+            document.querySelector("#fData").innerHTML = 
+            console.log(producer)
+
            
         }
 }
